@@ -1,5 +1,5 @@
 import numpy as np
-with open('.\\data\\input.txt','r+',encoding='utf-8-sig') as txt_file:
+with open('data\\input.txt','r+',encoding='utf-8-sig') as txt_file:
     text = txt_file.read()
 
 tokens = []
