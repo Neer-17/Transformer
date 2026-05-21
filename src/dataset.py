@@ -1,5 +1,5 @@
 import numpy as np
-with open('.\\data\\input.txt','r+',encoding='utf-8-sig') as txt_file:
+with open(r'data\input.txt','r',encoding='utf-8-sig') as txt_file:
     text = txt_file.read()
 
 tokens = []
@@ -29,11 +29,11 @@ def decode(en_list:list)->str:
     return "".join(snt)
 
 def split_data(encoded_text:list)->list:
-    train_data = encoded_text[:(0.9*(len(encoded_text)))]
-    val_data = encoded_text[(0.9*len(encoded_text)):]
+    train_data = encoded_text[:int(0.9*(len(encoded_text)))]
+    val_data = encoded_text[int(0.9*len(encoded_text)):]
     return train_data, val_data
 
-def get_data(block_size:int,batch_size:int,train_data:list)->list:
+def get_batch(block_size:int,batch_size:int,train_data:list)->list:
     x = []
     y = []
     for i in range(batch_size):
@@ -41,5 +41,3 @@ def get_data(block_size:int,batch_size:int,train_data:list)->list:
         x.append(train_data[st_index:st_index+block_size])
         y.append(train_data[st_index+1:st_index+block_size+1])
     return x,y
-
-
