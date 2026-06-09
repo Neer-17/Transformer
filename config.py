@@ -1,0 +1,8 @@
+d_model = 256
+num_heads = 8
+num_layers = 4
+d_ff  = 1024
+max_seq_len = 256
+dropout = 0.1
+batch_size = 64
+learning_rate = 3e-4
