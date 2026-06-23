@@ -28,7 +28,7 @@ class EncoderBlock(nn.Module):
 
     def forward(self,x:torch.Tensor,mask:bool):
 
-        att_weights,att_output = self.attention(x,mask=mask)
+        att_weights,att_output = self.attention(x,x,x,mask=mask)
         dr_output1 = self.dropout(att_output)
         res_output1 = x + dr_output1
         norm_output1 = self.norm1(res_output1)

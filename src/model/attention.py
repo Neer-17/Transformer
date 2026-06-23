@@ -24,13 +24,13 @@ class MultiHeadAttention(nn.Module):
         self.W_v = nn.Linear(self.d_model,self.d_model)
         self.W_o = nn.Linear(self.d_model,self.d_model)
     
-    def forward(self,x:torch.Tensor,mask:bool):
-        batch_size = x.size(0)
-        seq_len = x.size(1)
+    def forward(self,query:torch.Tensor,key:torch.Tensor,value:torch.Tensor,mask:bool):
+        batch_size = query.size(0)
+        seq_len = query.size(1)
 
-        Q = self.W_q(x)
-        K = self.W_k(x)
-        V = self.W_v(x)
+        Q = self.W_q(query)
+        K = self.W_k(key)
+        V = self.W_v(value)
 
         Q = Q.view(batch_size,seq_len,self.num_heads,self.d_k)
         K = K.view(batch_size,seq_len,self.num_heads,self.d_k)
